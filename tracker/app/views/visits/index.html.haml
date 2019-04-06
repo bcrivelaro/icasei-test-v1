@@ -1,0 +1,17 @@
+.row
+  .col-md-12
+    %h1 Visits
+
+    %table.table
+      %thead
+        %th GUID
+        %th URL
+        %th Access at
+        %th Created at
+      - @visits.each do |visit|
+        %tr
+          %td= visit.guid
+          %td= visit.url
+          %td= l(visit.accessed_at, format: :long)
+          %td= l(visit.created_at, format: :long)
+

@@ -5,3 +5,12 @@
 #
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
+
+100.times do
+  guid = SecureRandom.uuid
+  url = ['http://localhost:3000/', 'http://localhost:3000/about', 'http://localhost:3000/contact'].sample
+  accessed_at = 1.hour.ago - (rand(14400).minutes)
+  created_at = accessed_at + 10.seconds
+
+  Visit.create!(guid: guid, url: url, accessed_at: accessed_at, created_at: created_at)
+end
