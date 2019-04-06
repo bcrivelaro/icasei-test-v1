@@ -31,5 +31,12 @@ module Tracker
       g.orm :active_record, primary_key_type: :uuid
       g.orm :active_record, force_foreign_key_type: :uuid
     end
+
+    config.middleware.insert_before 0, Rack::Cors do
+      allow do
+        origins '*'
+        resource '*', headers: :any, methods: [:post]
+      end
+    end
   end
 end
