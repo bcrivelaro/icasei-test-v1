@@ -1,0 +1,33 @@
+<%= render 'alert' %>
+
+<h1>Contato</h1>
+
+<p>
+  Duis placerat ligula non nibh porttitor scelerisque. Mauris volutpat ante lacus, vel vestibulum massa auctor eget.
+  Integer lobortis gravida lectus, in venenatis purus sollicitudin sed. Sed scelerisque nibh nulla.
+  Aenean ac nulla ac dolor vulputate egestas interdum non dui. Sed sit amet accumsan nisi, vel auctor urna.
+  Vestibulum faucibus non ex ut rutrum. Nunc non semper erat. Pellentesque quis dapibus quam.
+  Sed dignissim eu lectus a fringilla. Donec pulvinar arcu quis malesuada euismod. Proin ultrices vehicula dui,
+  sit amet convallis libero faucibus nec.
+</p>
+
+<div id="contact-form-wrapper">
+  <form id="contact-form">
+    <div class="form-group">
+      <label>Email</label>
+      <input type="email" id="email" class="form-control">
+    </div>
+    <div class="form-group">
+      <label>Mensagem</label>
+      <textarea class="form-control" id="text-msg" rows="3"></textarea>
+    </div>
+
+    <button type="button" class="btn btn-success" id="send-form-btn">Enviar</button>
+  </form>
+</div>
+
+<br>
+
+<div>
+  <%= render 'buttons' %>
+</div>
