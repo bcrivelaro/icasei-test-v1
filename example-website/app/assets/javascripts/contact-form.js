@@ -3,7 +3,7 @@ formRequestControl = (function () {
   var $element  = $('#contact-form');
   var $button   = $element.find('#send-form-btn');
   var $email    = $element.find('#email');
-  var $msg      = $element.find('#text-msg');
+  var $name     = $element.find('#name');
 
   $button.on('click', handleRequest.bind(this));
 
@@ -15,9 +15,9 @@ formRequestControl = (function () {
 
   function validFields() {
     handleEmailField();
-    handleMsgField();
+    handleNameField();
 
-    return (validMsgField() && validEmailField());
+    return (validEmailField() && validNameField());
   }
 
   function validEmailField() {
@@ -35,24 +35,24 @@ formRequestControl = (function () {
     }
   }
 
-  function validMsgField() {
-    var msg = $msg.val();
+  function validNameField() {
+    var name = $name.val();
 
-    return (msg != '');
+    return (name != '');
   }
 
-  function handleMsgField() {
-    if (validMsgField()) {
-      $msg.removeClass('is-invalid')
+  function handleNameField() {
+    if (validNameField()) {
+      $name.removeClass('is-invalid')
     } else {
-      $msg.addClass('is-invalid')
+      $name.addClass('is-invalid')
     }
   }
 
   function sendFormData() {
     data = {
       email: $email.val(),
-      msg: $msg.val()
+      name: $name.val()
     }
 
     handleElementsBeforePost();
@@ -86,7 +86,7 @@ formRequestControl = (function () {
     $button.removeClass('disabled');
     $button.attr('disabled', false);
     $email.val('')
-    $msg.val('')
+    $name.val('')
   }
 });
 
