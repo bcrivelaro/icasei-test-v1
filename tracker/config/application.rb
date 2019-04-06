@@ -15,5 +15,21 @@ module Tracker
     # Application configuration can go into files in config/initializers
     # -- all .rb files in that directory are automatically loaded after loading
     # the framework and any gems in your application.
+
+    # Config rspec generators
+    config.generators do |g|
+      g.test_framework :rspec
+      g.helper_specs false
+      g.controller_specs false
+      g.view_specs false
+      g.routing_specs false
+      g.request_specs false
+    end
+
+    # Set uuid as primary key
+    config.generators do |g|
+      g.orm :active_record, primary_key_type: :uuid
+      g.orm :active_record, force_foreign_key_type: :uuid
+    end
   end
 end
