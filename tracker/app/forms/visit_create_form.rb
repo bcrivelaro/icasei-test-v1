@@ -28,7 +28,7 @@ class VisitCreateForm
     return if accessed_at.blank?
     return if parsed_accessed_at
 
-    errors.add(:accessed_at, 'invalid')
+    errors.add(:accessed_at, 'is invalid')
   end
 
   def parsed_accessed_at

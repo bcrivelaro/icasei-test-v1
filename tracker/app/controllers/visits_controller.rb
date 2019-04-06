@@ -1,6 +1,4 @@
 class VisitsController < ApplicationController
-  protect_from_forgery with: :null_session
-
   def index
     @visits = Visit.order(created_at: :desc).limit(50)
   end

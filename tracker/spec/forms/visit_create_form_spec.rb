@@ -20,7 +20,7 @@ RSpec.describe VisitCreateForm, type: :model do
       form = VisitCreateForm.new accessed_at: 'invalid'
       form.valid?
 
-      expect(form.errors[:accessed_at][0]).to eql('invalid')
+      expect(form.errors[:accessed_at][0]).to eql('is invalid')
     end
   end
 
