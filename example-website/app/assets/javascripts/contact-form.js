@@ -1,5 +1,5 @@
 formRequestControl = (function () {
-  var serverUrl = 'https://webhook.site/f439c352-3d4c-474d-9118-38a9e5a4727f';
+  var serverUrl = 'http://localhost:3000/contacts';
   var $element  = $('#contact-form');
   var $button   = $element.find('#send-form-btn');
   var $email    = $element.find('#email');

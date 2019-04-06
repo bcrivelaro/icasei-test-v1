@@ -1,17 +1,17 @@
 accessTracker = (function () {
   var cookieName           = 'icasei-access-tracker';
-  var serverUrl            = 'https://webhook.site/f439c352-3d4c-474d-9118-38a9e5a4727f';
+  var serverUrl            = 'http://localhost:3000/visits';
   var daysToExpiresCookies = 30;
 
   function sendVisitorData() {
     var guid            = getVisitorGuid();
     var url             = accessedUrl();
-    var currentDateTime = getCurrentDateTime();
+    var accessedAt = getCurrentDateTime();
 
     params = {
       guid: guid,
       url: url,
-      currentDateTime: currentDateTime
+      accessed_at: accessedAt
     }
 
     postData(params);
@@ -23,11 +23,10 @@ accessTracker = (function () {
 
     http.open('POST', serverUrl, true);
     http.setRequestHeader('Content-type', 'application/x-www-form-urlencoded');
+    http.withCredentials = true;
     http.onreadystatechange = function() {
       if(http.readyState == 4 && http.status == 200) {
         console.log('Response 200 OK');
-      } else {
-        console.log('Error');
       }
     }
     http.send(queryString);

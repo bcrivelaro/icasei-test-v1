@@ -9,6 +9,5 @@ RSpec.describe Visit, type: :model do
     it { should validate_presence_of(:guid) }
     it { should validate_presence_of(:url) }
     it { should validate_presence_of(:accessed_at) }
-    it { should validate_uniqueness_of(:guid) }
   end
 end
