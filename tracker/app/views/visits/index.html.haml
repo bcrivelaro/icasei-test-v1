@@ -1,6 +1,6 @@
 .row
   .col-md-12
-    %h1 Visits
+    %h1= @presenter.page_title
 
     %table.table
       %thead
@@ -8,7 +8,7 @@
         %th URL
         %th Access at
         %th Created at
-      - @visits.each do |visit|
+      - @presenter.visits.each do |visit|
         %tr
           %td= visit.guid
           %td= visit.url
