@@ -5,7 +5,6 @@ class ContactCreateForm
 
   validates :email, :name, presence: true
   validates :email, format: { with: URI::MailTo::EMAIL_REGEXP }
-  validate :validate_email_uniqueness
 
   def initialize(contact_params)
     @email = contact_params[:email]
@@ -13,6 +12,7 @@ class ContactCreateForm
   end
 
   def save
+    return true if email_registered?
     return unless valid?
 
     @contact = Contact.create!(
@@ -23,11 +23,9 @@ class ContactCreateForm
 
   private
 
-  def validate_email_uniqueness
-    return if email.blank?
-
-    if Contact.where(email: email).count(1) > 0
-      errors.add(:email, 'has already been taken')
-    end
+  # The test specification does not explain what should happen when a already registered contact
+  # sends another form request. So, this form object will just ignore when the email is already registered.
+  def email_registered?
+    Contact.where(email: email).count(1) > 0
   end
 end
