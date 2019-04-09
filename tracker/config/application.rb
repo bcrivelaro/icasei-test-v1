@@ -16,6 +16,8 @@ module Tracker
     # -- all .rb files in that directory are automatically loaded after loading
     # the framework and any gems in your application.
 
+    config.time_zone = 'America/Sao_Paulo'
+
     # Config rspec generators
     config.generators do |g|
       g.test_framework :rspec
@@ -34,7 +36,7 @@ module Tracker
 
     config.middleware.insert_before 0, Rack::Cors do
       allow do
-        origins 'http://localhost:3002'
+        origins 'http://localhost:3001'
         resource '*', headers: :any, methods: [:post], credentials: true
       end
     end
