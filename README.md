@@ -1,58 +1,92 @@
-# Teste iCasei: Back-end
-Desenvolver uma aplicação de Rastreamento de usuários
+# iCasei: Back-end test
+This project contains two Rails apps: the main app which tracks access and contacts from clients websites, and an example website which simulates a client website containg a JS file to send tracking info to the main app.
 
-## Instruções
-- Faça um fork desse projeto para a sua conta pessoal do GitHub.
-- Siga as especificações abaixo.
-- Crie um README em inglês que explique como rodar localmente a aplicação (iremos testar e rodar a aplicação a partir desse manual, inclusive criação de base de dados)
-- Devem existir testes automatizados. Quanto mais bem testada a aplicação, melhor.
-- O link do repositório deverá ser enviado para o e-mail backend@icasei.com.br com o título **Teste Back-End Developer**
+The JS file which tracks visits is located in `example-website/app/assets/javascripts/access-tracker.js`.
+## Dependencies
 
-## Especificações tecnicas
-- Desenvolver uma aplicação usando Ruby on Rails que contenha uma lista de contatos. Deve obrigatoriamente conter o campo **email** e **nome**.
-- Desenvolver uma biblioteca em JavaScript que quando incluída no site do cliente envie as seguintes informações para a sua aplicação:
-  - Identificador único do visitante (GUID) (Usar cookies ou local storage) 
-  - URL acessada
-  - Data/hora do acesso
-- Criar um site de exemplo contendo pelo menos 3 páginas utilizando a biblioteca JS desenvolvida
-- O site de exemplo deve conter uma página de contato com um formulário que envie o contato para sua aplicação. Esse formulário deve ter os campos “nome” e "email" onde “email” servirá como identificador único do contato.
-- Deverá haver uma página que mostre um relatório de rastreamento  dos últimos 50 acessos rastreados ordenados em ordem decrescente por data de inserção.
+1. Ruby 2.6.2
+2. Rails 5.2.3
+3. PostgreSQL 10.6
 
-## Espera-se que funcione da seguinte forma:
-- O visitante "A" acessa a página "Home" da sua página de exemplo.
-- O visitante "A" acessa a página de "Sobre" da sua página de exemplo.
-- O visitante "B" acessa a página "Home" da sua página de exemplo.
-- O visitante "B" acessa a página "Contato" da sua página de exemplo.
-- O visitante "B" preenche o formulário e confirma.
-- É criado um contato em sua aplicação para o Visitante "B".
-- Ao acessar a página de relatório na aplicação é possível ver as seguintes páginas:
-  - Visitante A | Home | Data/Hora
-  - Visitante A | Sobre | Data/Hora
-  - Visitante B | Home | Data/Hora
-  - Visitante B | Contato | Data/Hora
-- O visitante "A" acessa a página "Contato" da sua página de exemplo.
-- O visitante "A" preenche o formulário e confirma.
-- É criado um contato em sua aplicação para o Visitante "A".
-- Ao acessar a página de relatório na aplicação é possível ver as seguintes páginas:
-  - Visitante A | Home | Data/Hora
-  - Visitante A | Sobre | Data/Hora
-  - Visitante B | Home | Data/Hora
-  - Visitante B | Contato | Data/Hora
-  - Visitante A | Contato | Data/Hora
-- O visitante "B" acessa a página "Sobre" da página de exemplo.
-- Ao acessar a página de relatório na aplicação é possível ver as seguintes páginas:
-  - Visitante A | Home | Data/Hora
-  - Visitante A | Sobre | Data/Hora
-  - Visitante B | Home | Data/Hora
-  - Visitante B | Contato | Data/Hora
-  - Visitante A | Contato | Data/Hora
-  - Visitante B | Sobre | Data/Hora
-  
-Fique atento a problemas de performance e concorrência em uma grande quantidade de requisições. Caso julgue necessário o desenvolvimento de outras bibliotecas ou serviços, pode utilizar a tecnologia que quiser.
+## Instructions to install
 
-## O que será avaliado?
-- Organização do projeto
-- Lógica do código
-- Uso do Git
-- Uso de componentização
-- Testes automatizados
+_Be sure to have the required version of Ruby, Rails and PostgreSQL._
+
+1. Clone the repository:
+```
+  $ git clone git@github.com:bcrivelaro/teste-back-end.git
+```
+2. Open the clone folder:
+```
+  $ cd teste-back-end/
+```
+3. Open the example-website app folder:
+```
+  $ cd example-website/
+```
+4. Install all gem dependencies:
+```
+  $ bundle install
+```
+5. Go back to project root:
+```
+  $ cd ..
+```
+6. Open the tracker app folder:
+```
+  $ cd tracker/
+```
+7. Copy the .env example file:
+```
+  $ cp .env.example .env
+```
+8. Change .env values according to your PosgreSQL credentials.
+
+9. Install all gem dependencies:
+```
+  $ bundle install
+```
+10. Create the database:
+```
+  $ bundle exec rake db:create
+```
+11. Run the migrations:
+```
+  $ bundle exec rake db:migrate
+```
+
+## Running
+
+1. Open the tracker app folder:
+```
+  $ cd tracker/
+```
+2. Run the tracker app on port 3000:
+```
+  $ bundle exec rails s -p 3000
+```
+3. Go back to project root:
+```
+  $ cd ..
+```
+4. Open the example-website app folder:
+```
+  $ cd example-website/
+```
+5. Run the example-website app on port 3001:
+```
+  $ bundle exec rails s -p 3001
+```
+
+## Tests
+
+_Only the tracker app has tests._
+
+1. Enter the tracker app folder:
+```
+  $ cd tracker/
+```
+2. Run tests:
+```
+  $ bundle exec rspec spec/
+```
