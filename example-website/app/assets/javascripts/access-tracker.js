@@ -91,6 +91,7 @@ accessTracker = (function () {
   sendVisitorData();
 });
 
+/* If the client website does not use turbolinks, use this code block.
 var domReady = function(callback) {
   if (document.readyState === 'interactive' || document.readyState === 'complete') {
     callback()
@@ -98,5 +99,10 @@ var domReady = function(callback) {
     document.addEventListener('DOMContentLoaded', callback)
   };
 };
-
 domReady(accessTracker());
+*/
+
+// If the client website does use turbolinks (like most Rails apps), listen for the turbolinks event.
+document.addEventListener('turbolinks:load', function () {
+  accessTracker();
+})
