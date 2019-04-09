@@ -28,34 +28,32 @@ _Be sure to have the required version of Ruby, Rails and PostgreSQL._
 ```
   $ bundle install
 ```
-5. Go back to project root:
+5. Open the tracker app folder:
 ```
-  $ cd ..
+  $ cd ../tracker/
 ```
-6. Open the tracker app folder:
-```
-  $ cd tracker/
-```
-7. Copy the .env example file:
+6. Copy the .env example file:
 ```
   $ cp .env.example .env
 ```
-8. Change .env values according to your PosgreSQL credentials.
+7. Change .env values according to your PosgreSQL credentials and desired database pooling.
 
-9. Install all gem dependencies:
+8. Install all gem dependencies:
 ```
   $ bundle install
 ```
-10. Create the database:
+9. Create the database:
 ```
   $ bundle exec rake db:create
 ```
-11. Run the migrations:
+10. Run the migrations:
 ```
   $ bundle exec rake db:migrate
 ```
 
 ## Running
+
+_Be sure to be in the project root._
 
 1. Open the tracker app folder:
 ```
@@ -65,18 +63,18 @@ _Be sure to have the required version of Ruby, Rails and PostgreSQL._
 ```
   $ bundle exec rails s -p 3000
 ```
-3. Go back to project root:
-```
-  $ cd ..
-```
-4. Open the example-website app folder:
+3. **In another process,** open the example-website folder:
 ```
   $ cd example-website/
 ```
-5. Run the example-website app on port 3001:
+4. Run the example-website app on port 3001:
 ```
   $ bundle exec rails s -p 3001
 ```
+
+Open `localhost:3000/` to load the visits report page.
+
+Open `localhost:3001/` and navigate to send tracking info to the main app.
 
 ## Tests
 
