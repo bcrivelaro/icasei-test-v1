@@ -7,6 +7,7 @@ accessTracker = (function () {
     var guid            = getVisitorGuid();
     var url             = accessedUrl();
     var accessedAt = getCurrentDateTime();
+    console.log('<%= ENV['TESTE'] %>');
 
     params = {
       guid: guid,
